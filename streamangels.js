@@ -66,8 +66,9 @@ function getFormattedDiv() {
     save_total_day(totalDay);
 
     // Tiempo visto
-    const balanceHours = Math.floor(toAdd / 60); // Obtener las horas completas
-    const remainingMinutes = toAdd % 60; // Obtener los minutos restantes
+    const minutes = getMinutesDay();
+    const balanceHours = Math.floor(minutes / 60); // Obtener las horas completas
+    const remainingMinutes = minutes % 60; // Obtener los minutos restantes
         
     // Crear el texto para mostrar la última información válida si existe
     const textlast = `<hr>
@@ -170,6 +171,11 @@ function getSavedValue() {
   }
 
   return 0.0;
+}
+
+function getMinutesDay() {
+  const elementMinutes = document.getElementById("tspan753");
+  return parseFloat(elementMinutes.textContent);
 }
 
 function formatdate(time) {
