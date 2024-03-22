@@ -1,5 +1,5 @@
 // Extension Version
-const Version = "0.3 [ALPHA]";
+const Version = "0.3.1 [ALPHA]";
 
 // Tiempo de inicio para medir el rendimiento
 const startTime = performance.now();
@@ -95,17 +95,17 @@ function getFormattedDiv() {
           <!-- Balance del día -->
           <h6 class="text-decoration-underline text-center">TOTAL MONEY FOR THE DAY</h6>
           <li class="mb-2">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i> Day Balance: ${toAdd.toFixed(2)} <i class="fa fa-eur" aria-hidden="true"></i>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i> Day Balance: ${toAdd.toFixed(2)} <i class="fa fa-eur" aria-hidden="true"></i> | (<span class="text-success">+${minutes < 0 ? '0.0%' : (((minutes * mValue) * 100) / WithdrawalVal).toFixed(2)}%</span>)
           </li>
           <hr>
   
           <!-- Balance total -->
           <h6 class="text-decoration-underline text-center">TOTAL MONEY</h6>
           <li class="mb-2">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i> Total Balance: ${total} <i class="fa fa-eur" aria-hidden="true"></i> | (${(total * 100) / WithdrawalVal}%)
+            <i class="fa fa-arrow-right" aria-hidden="true"></i> Total Balance: ${total} <i class="fa fa-eur" aria-hidden="true"></i> | (${((total * 100) / WithdrawalVal).toFixed(2)}%)
           </li>
           <div style="width: 100%; display: block; max-width: 100%; height: 32px; background-color: #FFE500;" class="p-0 mt-3 rounded">
-          <div id='progressbar' class="progress p-0 rounded" style="width: ${Math.max(0, (total * 100) / WithdrawalVal)}%; height: 32px; background-color: #7D2EC5;">
+          <div id='progressbar' class="progress p-0 rounded" style="width: ${Math.min(Math.max(0, (total * 100) / WithdrawalVal), 100)}%; height: 32px; background-color: #7D2EC5;">
           </div>
           </div>
           <hr class="mt-3">
